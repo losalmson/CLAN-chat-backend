@@ -12,3 +12,7 @@ Content-Type: application/json; charset=utf-8
     "user": "Superman",
     "message": "Hey guys its me :)"
 }
+
+### DELETE Message With ID
+DELETE http://localhost:3000/api/messages/3
+Content-Type: application/json; charset=utf-8

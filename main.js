@@ -66,6 +66,15 @@ app.post('/api/messages',(req,res)=>{
     res.status(201).send('Created');
 });
 
+app.delete('/api/messages/:id', (req, res) => {
+    let msgID = messages.find(messageId => messageId.messageId == req.params.id);
+    if(msgID == undefined){
+        res.status(404).send('HA HA Finns inte');
+    }
+    messages.splice(messages.indexOf(msgID),1);
+    res.status(204).send('Removed message');   
+});
+
 app.get("/api/messages", (req, res) => {
     res.send(messages);
 });
