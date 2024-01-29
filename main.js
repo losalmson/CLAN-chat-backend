@@ -40,6 +40,14 @@ const messages = [
     },
 ];
 
+app.get("/api/messages/:id", (req, res) => {
+    let msgID = messages.find(messageId => messageId.messageId == req.params.id);
+
+    if(msgID === undefined){
+        res.status(404).send("Error: 404 not found.");
+    }
+    res.json(msgID);
+});
 app.get("/api/messages", (req, res) => {
     res.send(messages);
 });
