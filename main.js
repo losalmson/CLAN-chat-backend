@@ -48,6 +48,24 @@ app.get("/api/messages/:id", (req, res) => {
     }
     res.json(msgID);
 });
+
+
+
+function getNextId() {
+    let m = Math.max(...messages.map(message => message.messageId));
+    return m + 1;
+  };
+  
+app.post('/api/messages',(req,res)=>{
+    const msg = {
+        user: req.body.user,
+        message: req.body.message,
+        messageId:getNextId()
+    }
+    messages.push(msg);
+    res.status(201).send('Created');
+});
+
 app.get("/api/messages", (req, res) => {
     res.send(messages);
 });

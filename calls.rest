@@ -3,3 +3,12 @@ GET http://localhost:3000/api/messages
 
 ### GET Single Message
 GET http://localhost:3000/api/messages/2
+
+### POST New Message
+POST http://localhost:3000/api/messages
+Content-Type: application/json; charset=utf-8
+
+{
+    "user": "Superman",
+    "message": "Hey guys its me :)"
+}
