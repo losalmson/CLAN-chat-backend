@@ -1,0 +1,5 @@
+### GET Messages
+GET http://localhost:3000/api/messages
+
+### GET Single Message
+GET http://localhost:3000/api/messages/1
