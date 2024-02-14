@@ -1,8 +1,8 @@
-{
+modules.exports ={
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
+    "username": "dev",
+    "password": process.env.MYSQLPASSWORD,
+    "database": "clan",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
