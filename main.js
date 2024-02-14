@@ -1,11 +1,24 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
+const session = require("express-session");
+const migrationHelper = require("./migrationhelper");
+require('dotenv').config();
 
-app.use(bodyParser.json());
-app.use(cors());
+app.use(express.json());
+app.use(cors({
+    origin:"http://localhost:5500",
+    credentials:true
+}));
+
+app.use(session({
+    secret: 'my-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    // cookie: { secure: true }
+}));
+
 
 const messages = [
     {
@@ -79,6 +92,7 @@ app.get("/api/messages", (req, res) => {
     res.send(messages);
 });
 
-app.listen(port, () =>{
+app.listen(port, async () =>{
+    await migrationHelper.migrate();
     console.log("Listening to port " + port);
 });
