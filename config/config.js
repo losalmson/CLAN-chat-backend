@@ -1,4 +1,4 @@
-modules.exports ={
+module.exports ={
   "development": {
     "username": "dev",
     "password": process.env.MYSQLPASSWORD,
