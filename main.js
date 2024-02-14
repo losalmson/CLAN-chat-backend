@@ -73,7 +73,7 @@ app.delete('/api/messages/:id', (req, res) => {
     }
     messages.splice(messages.indexOf(msgID),1);
     res.status(204).send('Removed message');   
-});
+}); 
 
 app.get("/api/messages", (req, res) => {
     res.send(messages);
