@@ -5,6 +5,7 @@ const port = 3000;
 const session = require("express-session");
 const migrationHelper = require("./migrationhelper");
 require('dotenv').config();
+const userControllers = require("./controllers/userControllers.js");
 
 
 app.use(express.json());
@@ -20,17 +21,7 @@ app.use(session({
     // cookie: { secure: true }
 }));
 
-app.post("/api/createUser", async (req, res) => {
-    const { username, password } = req.body;
-    let hashedPassword = await bcrypt.hash(password, 10);
-
-    await User.create({
-        username,
-        password: hashedPassword
-    });
-
-    res.status(204).send("");
-})
+app.post("/api/createUser", userControllers.createUser);
 
 app.post("/api/createMessage", async(req,res) =>{
     const {message, userId} = req.body;
