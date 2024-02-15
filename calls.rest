@@ -19,7 +19,7 @@ POST http://localhost:3000/api/createMessage
 Content-Type: application/json; charset=utf-8
 
 {
-    "message": "jag fucking hatar hockey",
-    "userId": 2
+    "message": "jag bryr mig inte om hockey",
+    "userId": 3
 }
 

@@ -23,12 +23,7 @@ app.use(session({
 
 app.post("/api/createUser", userControllers.createUser);
 
-app.post("/api/createMessage", async(req,res) =>{
-    const {message, userId} = req.body;
-
-    await Message.create({message,userId});
-    res.status(204).send("");
-});
+app.post("/api/createMessage", userControllers.createMessage);
 
 app.listen(port, async () =>{
     await migrationHelper.migrate();

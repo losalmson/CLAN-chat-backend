@@ -13,4 +13,11 @@ const createUser = async(req,res) => {
     res.status(204).send("");
 }
 
-module.exports = {createUser}
+const createMessage = async(req,res) =>{
+    const {message, userId} = req.body;
+
+    await Message.create({message,userId});
+    res.status(204).send("");
+}
+
+module.exports = {createUser, createMessage}
