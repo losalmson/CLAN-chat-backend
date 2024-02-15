@@ -7,7 +7,7 @@ const migrationHelper = require("./migrationhelper");
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 
-const { User } = require('./models')
+const { User, Message } = require('./models')
 
 
 app.use(express.json());
@@ -105,8 +105,15 @@ app.post("/api/createUser", async (req, res) => {
         password: hashedPassword
     });
 
-    res.status(204);
+    res.status(204).send("");
 })
+
+app.post("/api/createMessage", async(req,res) =>{
+    const {message, userId} = req.body;
+
+    await Message.create({message,userId});
+    res.status(204).send("");
+});
 
 app.listen(port, async () =>{
     await migrationHelper.migrate();

@@ -4,14 +4,6 @@ GET http://localhost:3000/api/messages
 ### GET Single Message
 GET http://localhost:3000/api/messages/2
 
-### POST New Message
-POST http://localhost:3000/api/messages
-Content-Type: application/json; charset=utf-8
-
-{
-    "user": "Superman",
-    "message": "Hey guys its me :)"
-}
 
 ### POST New User
 POST http://localhost:3000/api/createUser
@@ -22,6 +14,12 @@ Content-Type: application/json; charset=utf-8
     "password": "hockey"
 }
 
-### DELETE Message With ID
-DELETE http://localhost:3000/api/messages/3
+### POST New Message
+POST http://localhost:3000/api/createMessage
 Content-Type: application/json; charset=utf-8
+
+{
+    "message": "jag fucking hatar hockey",
+    "userId": 2
+}
+
