@@ -17,7 +17,7 @@ const createMessage = async(req,res) =>{
     const {message, userId} = req.body;
 
     await Message.create({message,userId});
-    res.status(204).send("");
+    res.status(200).send("");
 }
 
 const loginUserAccount = async (req,res) => {

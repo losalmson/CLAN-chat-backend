@@ -24,7 +24,7 @@ app.use(session({
 app.post("/api/createUser", userControllers.createUser);
 
 app.post("/api/createMessage", userControllers.createMessage);
-app.post("/api/login", userControllers.loginUserAccount);
+app.post("/api/login", userControllers.loginUserAccount);   
 
 app.listen(port, async () =>{
     await migrationHelper.migrate();
