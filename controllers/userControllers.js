@@ -20,4 +20,23 @@ const createMessage = async(req,res) =>{
     res.status(204).send("");
 }
 
-module.exports = {createUser, createMessage}
+const loginUserAccount = async (req,res) => {
+
+    const {username,password} = req.body;
+
+    const user = await User.findOne({
+        where: {username}
+    });
+    if (!user) {
+        return res.status(401).json('Could not login');
+    };
+
+    const passwordValid = await bcrypt.compare(password, user.password);
+    if (!passwordValid) {
+        return res.status(401).json('Could not login');
+    };
+    req.session.userId = user.id;
+    res.json({status:"Successful login"});
+}
+
+module.exports = {createUser, createMessage, loginUserAccount}
