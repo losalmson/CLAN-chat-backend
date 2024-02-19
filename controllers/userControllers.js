@@ -10,7 +10,7 @@ const createUser = async(req,res) => {
         password: hashedPassword
     });
 
-    res.status(204).send("");
+    res.status(201).send("");
 }
 
 const createMessage = async(req,res) =>{
