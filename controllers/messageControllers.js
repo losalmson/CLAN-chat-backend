@@ -7,4 +7,9 @@ const createMessage = async(req,res) =>{
     res.status(200).send("");
 }
 
-module.exports = { createMessage }
+const getMessages = async(req,res) =>{
+    
+    res.status(200).send("hej");
+}
+
+module.exports = { createMessage, getMessages }
