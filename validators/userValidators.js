@@ -1,4 +1,5 @@
 const {check, validationResult} = require("express-validator");
+const {User} = require("../models");
 
 const validateCreateUser = [
   check("username")
@@ -32,10 +33,16 @@ const validateCreateUser = [
       "Minimum 8 characters required! One number and one symbol required!"
     ),
 
-  (req, res, next) => {
+  async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(422).json({errors: errors.array()});
+    const usernameInUse = await User.findOne({
+      where: {username: req.body.username},
+    });
+    if (usernameInUse) {
+      return res.status(409).json({message: "Username already in use!"});
+    }
     next();
   },
 ];
