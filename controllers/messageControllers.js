@@ -9,9 +9,20 @@ const createMessage = async(req,res) =>{
 
 const getMessages = async(req,res) =>{
     
-    const messages = await Message.findAll()
+    const messages = await Message.findAll();
 
+    messages.forEach(async(message) =>{
+        const user = await User.findOne({
+            where: {id:message.userId}
+        });
+        message.dataValues.username = user.dataValues.username;
+        //console.log(user.dataValues.username);
+        console.log(message);
+    });
+    console.log(messages);
     res.status(200).json(messages);
+
+    
 }
 
 module.exports = { createMessage, getMessages }
