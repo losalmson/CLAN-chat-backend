@@ -13,12 +13,7 @@ const createUser = async(req,res) => {
     res.status(201).send("");
 }
 
-const createMessage = async(req,res) =>{
-    const {message, userId} = req.body;
 
-    await Message.create({message,userId});
-    res.status(200).send("");
-}
 
 const loginUserAccount = async (req,res) => {
 
@@ -39,4 +34,4 @@ const loginUserAccount = async (req,res) => {
     res.json({status:"Successful login"});
 }
 
-module.exports = {createUser, createMessage, loginUserAccount}
+module.exports = {createUser, loginUserAccount}

@@ -5,6 +5,7 @@ const port = 3000;
 const session = require("express-session");
 const migrationHelper = require("./migrationhelper");
 const userControllers = require("./controllers/userControllers.js");
+const messageControllers = require("./controllers/messageControllers.js");
 
 
 app.use(express.json());
@@ -22,7 +23,7 @@ app.use(session({
 
 app.post("/api/createUser", userControllers.createUser);
 
-app.post("/api/createMessage", userControllers.createMessage);
+app.post("/api/createMessage", messageControllers.createMessage);
 app.post("/api/login", userControllers.loginUserAccount);   
 
 app.listen(port, async () =>{
