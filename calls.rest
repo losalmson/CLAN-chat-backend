@@ -10,7 +10,7 @@ POST http://localhost:3000/api/createUser
 Content-Type: application/json; charset=utf-8
 
 {
-    "username": "andreas",
+    "username": "lokatten",
     "password": "hockey"
 }
 

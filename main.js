@@ -4,7 +4,6 @@ const app = express();
 const port = 3000;
 const session = require("express-session");
 const migrationHelper = require("./migrationhelper");
-require('dotenv').config();
 const userControllers = require("./controllers/userControllers.js");
 
 
