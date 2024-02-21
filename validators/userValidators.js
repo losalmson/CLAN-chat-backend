@@ -7,7 +7,7 @@ const validateCreateUser = [
     .escape()
     .not()
     .isEmpty()
-    .withMessage("Username should contain an username!")
+    .withMessage("Username should contain an a you sir name!")
     .bail()
     .isLength({min: 3, max: 25})
     .withMessage("Username should be between 3 and 25 characters!")
@@ -47,6 +47,29 @@ const validateCreateUser = [
   },
 ];
 
+const validateLoginUserAccount = [
+  check("username")
+    .trim()
+    .escape()
+    .not()
+    .isEmpty()
+    .withMessage("Username should contain an a you sir name!"),
+  check("password")
+    .trim()
+    .escape()
+    .not()
+    .isEmpty()
+    .withMessage("Password can not be empty!"),
+
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(422).json({errors: errors.array()});
+    next();
+  },
+];
+
 module.exports = {
   validateCreateUser,
+  validateLoginUserAccount,
 };

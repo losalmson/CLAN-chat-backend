@@ -30,7 +30,11 @@ app.post(
   userValidators.validateCreateUser,
   userControllers.createUser
 );
-app.post("/api/login", userControllers.loginUserAccount);
+app.post(
+  "/api/login",
+  userValidators.validateLoginUserAccount,
+  userControllers.loginUserAccount
+);
 
 app.post("/api/createMessage", messageControllers.createMessage);
 app.get("/api/getMessages", messageControllers.getMessages);
