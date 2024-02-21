@@ -1,28 +1,32 @@
-const { User, Message } = require('../models');
+const {User, Message} = require("../models");
 
-const createMessage = async(req,res) =>{
-    const {message, userId} = req.body;
+const createMessage = async (req, res) => {
+  const {message, userId} = req.body;
 
-    await Message.create({message,userId});
-    res.status(200).send("");
-}
+  await Message.create({message, userId});
+  res.status(200).send("");
+};
 
-const getMessages = async(req,res) =>{
-    
-    const messages = await Message.findAll();
+const getMessages = async (req, res) => {
+  let messages = await Message.findAll();
 
-    messages.forEach(async(message) =>{
-        const user = await User.findOne({
-            where: {id:message.userId}
-        });
-        message.dataValues.username = user.dataValues.username;
-        //console.log(user.dataValues.username);
-        console.log(message);
+  for (const message of messages) {
+    const user = await User.findOne({
+      where: {id: message.userId},
     });
-    console.log(messages);
-    res.status(200).json(messages);
+    message.dataValues.username = user.dataValues.username;
+  }
 
-    
-}
+  const messagesOutput = messages.map((message) => ({
+    id: message.dataValues.id,
+    message: message.dataValues.message,
+    username: message.dataValues.username,
+    createdAt: message.dataValues.createdAt,
+    updatedAt: message.dataValues.updatedAt,
+  }));
 
-module.exports = { createMessage, getMessages }
+  console.log(messagesOutput);
+  res.status(200).json(messagesOutput);
+};
+
+module.exports = {createMessage, getMessages};

@@ -20,6 +20,6 @@ Content-Type: application/json; charset=utf-8
 
 {
     "message": "jag bryr mig inte om hockey",
-    "userId": 3
+    "userId": 1
 }
 
