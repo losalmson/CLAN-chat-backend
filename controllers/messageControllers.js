@@ -9,7 +9,9 @@ const createMessage = async(req,res) =>{
 
 const getMessages = async(req,res) =>{
     
-    res.status(200).send("hej");
+    const messages = await Message.findAll()
+
+    res.status(200).json(messages);
 }
 
 module.exports = { createMessage, getMessages }
