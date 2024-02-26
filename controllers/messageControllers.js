@@ -3,7 +3,7 @@ const {User, Message} = require("../models");
 const createMessage = async (req, res) => {
   const {message, userId} = req.body;
 
-  await Message.create({message, userId});
+  await Message.create({message, userId:req.session.userId});
   res.status(200).send("");
 };
 
