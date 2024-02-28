@@ -40,6 +40,8 @@ app.post(
 app.post("/api/createMessage", messageValidators.validateMessage, messageControllers.createMessage);
 app.get("/api/getMessages", messageControllers.getMessages);
 
+app.post("/api/clanAuthenticator", userControllers.requireAuth, userControllers.clanUser);
+
 app.listen(port, async () => {
   await migrationHelper.migrate();
   console.log("Listening to port " + port);

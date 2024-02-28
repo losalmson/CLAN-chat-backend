@@ -1,6 +1,9 @@
 ### GET Messages
 GET http://localhost:3000/api/getMessages
 
+### GET User Authentification
+GET http://localhost:3000/api/clanAuthenticator
+
 ### GET Single Message
 GET http://localhost:3000/api/messages/2
 

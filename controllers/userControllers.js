@@ -31,4 +31,23 @@ const loginUserAccount = async (req, res) => {
   res.json({status: "Successful login"});
 };
 
-module.exports = {createUser, loginUserAccount};
+const requireAuth = (req, res, next) => {
+  console.log("inne i requireAuth");
+    if (req.session.userId) {
+      console.log("finns");
+        next();
+    } else {
+      console.log("finns inte");
+        res.status(401).send('login');
+    }
+}
+
+const clanUser = async (req, res) => {  
+  console.log("Inne i clanUser");
+  const user = await User.findOne({
+    where: {id: req.session.userId},
+  });
+  res.json(user)
+  }
+
+module.exports = {createUser, loginUserAccount, requireAuth, clanUser};
