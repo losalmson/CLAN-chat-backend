@@ -7,6 +7,7 @@ const migrationHelper = require("./migrationhelper");
 const userControllers = require("./controllers/userControllers.js");
 const messageControllers = require("./controllers/messageControllers.js");
 const userValidators = require("./validators/userValidators.js");
+const messageValidators = require("./validators/messageValidators.js");
 
 app.use(express.json());
 app.use(
@@ -36,7 +37,7 @@ app.post(
   userControllers.loginUserAccount
 );
 
-app.post("/api/createMessage", messageControllers.createMessage);
+app.post("/api/createMessage", messageValidators.validateMessage, messageControllers.createMessage);
 app.get("/api/getMessages", messageControllers.getMessages);
 
 app.listen(port, async () => {

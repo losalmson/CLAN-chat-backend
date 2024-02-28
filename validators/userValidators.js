@@ -10,7 +10,7 @@ const validateCreateUser = [
     .withMessage("Username should contain an a you sir name!")
     .bail()
     .isLength({min: 3, max: 25})
-    .withMessage("Username should be between 3 and 25 characters!")
+    .withMessage("Username needs to be between 3 and 25 characters!")
     .bail()
     .isAlphanumeric()
     .withMessage("Username should contain only letters and numbers!")
